@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout :: areas(~{::title},~{::body})}">
+<head>
+
+<title>Daily Shop | [[#{title.home}]]</title>
+
+</head>
+<body>
+
+	<!-- Start slider -->
+	<section id="aa-slider">
+		<div class="aa-slider-area">
+			<div id="sequence" class="seq">
+				<div class="seq-screen">
+					<ul class="seq-canvas">
+						<!-- single slide item -->
+						<li>
+							<div class="seq-model">
+								<img data-seq
+									src="https://luxuo.vn/wp-content/uploads/2022/08/dior-fall-22-makeup-banner-scaled-1.webp"
+									alt="Men slide img" />
+							</div>
+							<div class="seq-title">
+								<span data-seq>Save Up to 75% Off</span>
+								<h2 data-seq>Men Collection</h2>
+								<p data-seq>Lorem ipsum dolor sit amet, consectetur
+									adipisicing elit. Minus, illum.</p>
+								<a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP
+									NOW</a>
+							</div>
+						</li>
+						<!-- single slide item -->
+						<li>
+							<div class="seq-model">
+								<img data-seq src="https://i0.wp.com/www.nylon.com.sg/wp-content/uploads/2023/03/dior-or-capsule-nylon-banner.jpg?fit=2000%2C773&ssl=1" />
+							</div>
+							<div class="seq-title">
+								<span data-seq>Save Up to 40% Off</span>
+								<h2 data-seq>Wristwatch Collection</h2>
+								<p data-seq>Lorem ipsum dolor sit amet, consectetur
+									adipisicing elit. Minus, illum.</p>
+								<a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP
+									NOW</a>
+							</div>
+						</li>
+						<!-- single slide item -->
+						<li>
+							<div class="seq-model">
+								<img data-seq src="https://diorhoodie.net/wp-content/uploads/2023/04/Banner.png" />
+							</div>
+							<div class="seq-title">
+								<span data-seq>Save Up to 75% Off</span>
+								<h2 data-seq>Jeans Collection</h2>
+								<p data-seq>Lorem ipsum dolor sit amet, consectetur
+									adipisicing elit. Minus, illum.</p>
+								<a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP
+									NOW</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- slider navigation btn -->
+				<fieldset class="seq-nav" aria-controls="sequence"
+					aria-label="Slider buttons">
+					<a type="button" class="seq-prev" aria-label="Previous"><span
+						class="fa fa-angle-left"></span></a> <a type="button" class="seq-next"
+						aria-label="Next"><span class="fa fa-angle-right"></span></a>
+				</fieldset>
+			</div>
+		</div>
+	</section>
+	<!-- / slider -->
+	
+	<!-- Start Promo section -->
+	<section id="aa-promo">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="aa-promo-area">
+						<div class="row">
+							<!-- promo left -->
+							<div class="col-md-5 no-padding">
+								<div class="aa-promo-left"  style="border: 3px solid; color: white;">
+									<div class="aa-promo-banner">
+										<img th:src="@{|/assets/images/2.jpg|}">
+									</div>
+								</div>
+							</div>
+							<!-- promo right -->
+							<div class="col-md-7 no-padding">
+								<div class="aa-promo-right">
+									<div class="aa-single-promo-right" style="border: 3px solid; color: white;">
+										<div class="aa-promo-banner">
+											<img th:src="@{|/styleUser/images/3.jpg|}">
+											<div class="aa-prom-content">
+												<span>75% Off</span>
+												<h4>
+													<a href="#">For Women</a>
+												</h4>
+											</div>
+										</div>
+									</div>
+									<div class="aa-single-promo-right" style="border: 3px solid; color: white;">
+										<div class="aa-promo-banner">
+											<img th:src="@{|/styleUser/images/4.jpg|}">
+											<div class="aa-prom-content">
+												<span>Sale Off</span>
+												<h4>
+													<a href="#">On Shoes</a>
+												</h4>
+											</div>
+										</div>
+									</div>
+									<div class="aa-single-promo-right" style="border: 3px solid; color: white;">
+										<div class="aa-promo-banner">
+											<img th:src="@{|/styleUser/images/5.jpg|}">
+											<div class="aa-prom-content">
+												<span>New Arrivals</span>
+												<h4>
+													<a href="#">For Kids</a>
+												</h4>
+											</div>
+										</div>
+									</div>
+									<div class="aa-single-promo-right" style="border: 3px solid; color: white;">
+										<div class="aa-promo-banner">
+											<img th:src="@{|/styleUser/images/6.jpg|}">
+											<div class="aa-prom-content">
+												<span>25% Off</span>
+												<h4>
+													<a href="#">For Bags</a>
+												</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- / Promo section -->
+<!-- popular section -->
+	<section id="aa-popular-category">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="aa-popular-category-area">
+							<!-- start prduct navigation -->
+							<ul class="nav nav-tabs aa-products-tab">
+								<li class="active"><a href="#popular" data-toggle="tab">Best Price</a></li>
+							</ul>
+							<!-- Tab panes -->
+							<div class="tab-content">
+								<!-- Start men popular category -->
+								<div class="tab-pane fade in active" id="popular">
+									<ul class="aa-product-catg aa-popular-slider">
+										<!-- start single product item -->
+									<li th:each="p: ${list1}">
+									<figure>
+										<a class="aa-product-img"
+											th:href="@{|/product/detail/${p.id}|}">
+											<img th:src="@{|/styleUser/images/${p.image}|}" alt="polo shirt img"></a>
+										<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="aa-add-card-btn" style="cursor: pointer;"><span
+											class="fa fa-shopping-cart"></span>Add To Cart</a>
+										<figcaption>
+											<h4 class="aa-product-title">
+												<a href="" th:utext="${p.name}"></a>
+											</h4>
+											<span class="aa-product-price">$[[${p.price}]]</span><span
+												class="aa-product-price"><del>$[[${p.price}+10 ]]</del></span>
+											<p class="aa-product-descrip">Lorem ipsum dolor sit amet,
+												consectetur adipisicing elit. Numquam accusamus facere
+												iusto, autem soluta amet sapiente ratione inventore nesciunt
+												a, maxime quasi consectetur, rerum illum.</p>
+										</figcaption>
+									</figure>
+									<div class="aa-product-hvr-content">
+										<a th:attr="ng-click=@{|cart.add(${p.id})|}" data-toggle2="tooltip" data-placement="top"
+											title="Quick View" data-toggle="modal"
+											data-target="#quick-view-modal"><span
+											class="fa fa-search"></span></a>
+									</div> <!-- product badge --> <span class="aa-badge aa-hot" th:text="${p.available} ? 'Sale !' : 'Best Sale !'"></span>
+								</li>								
+									</ul>
+									<a class="aa-browse-btn" style="margin: 35px;">Browse all Product <span
+										class="fa fa-long-arrow-right"></span></a>
+								</div>
+						
+							
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- / popular section -->
+	<!-- banner section -->
+	<section id="aa-banner">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="aa-banner-area">
+							<a style="margin-top: 50px;" href="#"><img style="border: 1rem solid;" th:src="@{|/styleUser/images/7.jpg|}"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- popular section -->
+	<section id="aa-popular-category">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="aa-popular-category-area">
+							<!-- start prduct navigation -->
+							<ul class="nav nav-tabs aa-products-tab">
+								<li class="active"><a href="#popular" data-toggle="tab">New Update</a></li>
+							</ul>
+							<!-- Tab panes -->
+							<div class="tab-content">
+								<!-- Start men popular category -->
+								<div class="tab-pane fade in active" id="popular">
+									<ul class="aa-product-catg aa-popular-slider">
+										<!-- start single product item -->
+										<li th:each="p: ${list2}">
+									<figure>
+										<a class="aa-product-img"
+											th:href="@{|/product/detail/${p.id}|}">
+											<img th:src="@{|/styleUser/images/${p.image}|}" alt="polo shirt img"></a>
+										<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="aa-add-card-btn" style="cursor: pointer;"><span
+											class="fa fa-shopping-cart"></span>Add To Cart</a>
+										<figcaption>
+											<h4 class="aa-product-title">
+												<a href="" th:utext="${p.name}"></a>
+											</h4>
+											<span class="aa-product-price">$[[${p.price}]]</span><span
+												class="aa-product-price"><del>$[[${p.price}+10 ]]</del></span>
+											<p class="aa-product-descrip">Lorem ipsum dolor sit amet,
+												consectetur adipisicing elit. Numquam accusamus facere
+												iusto, autem soluta amet sapiente ratione inventore nesciunt
+												a, maxime quasi consectetur, rerum illum.</p>
+										</figcaption>
+									</figure>
+									<div class="aa-product-hvr-content">
+										<a th:attr="ng-click=@{|cart.add(${p.id})|}" data-toggle2="tooltip" data-placement="top"
+											title="Quick View" data-toggle="modal"
+											data-target="#quick-view-modal"><span
+											class="fa fa-search"></span></a>
+									</div> <!-- product badge --> <span class="aa-badge aa-sale" th:text="${p.available} ? 'New !' : 'Old !'"></span>
+								</li>				
+									</ul>
+									<a class="aa-browse-btn" style="margin: 35px;">Browse all Product <span
+										class="fa fa-long-arrow-right"></span></a>
+								</div>
+						
+							
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- / popular section -->
+	<!-- banner section -->
+	<section id="aa-banner">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="aa-banner-area">
+							<a><img style="border: 1rem solid; color: gray;" th:src="@{|/styleUser/images/8.jpg|}"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+		<!-- popular section -->
+	<section id="aa-popular-category">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="aa-popular-category-area">
+							<!-- start prduct navigation -->
+							<ul class="nav nav-tabs aa-products-tab">
+								<li class="active"><a href="#popular" data-toggle="tab">Available</a></li>
+							</ul>
+							<!-- Tab panes -->
+							<div class="tab-content">
+								<!-- Start men popular category -->
+								<div class="tab-pane fade in active" id="popular">
+									<ul class="aa-product-catg aa-popular-slider">
+										<!-- start single product item -->
+										<li th:each="p: ${list3}">
+									<figure>
+										<a class="aa-product-img"
+											th:href="@{|/product/detail/${p.id}|}">
+											<img th:src="@{|/styleUser/images/${p.image}|}" alt="polo shirt img"></a>
+										<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="aa-add-card-btn" style="cursor: pointer;"><span
+											class="fa fa-shopping-cart"></span>Add To Cart</a>
+										<figcaption>
+											<h4 class="aa-product-title">
+												<a href="" th:utext="${p.name}"></a>
+											</h4>
+											<span class="aa-product-price">$[[${p.price}]]</span><span
+												class="aa-product-price"><del>$[[${p.price}+10 ]]</del></span>
+											<p class="aa-product-descrip">Lorem ipsum dolor sit amet,
+												consectetur adipisicing elit. Numquam accusamus facere
+												iusto, autem soluta amet sapiente ratione inventore nesciunt
+												a, maxime quasi consectetur, rerum illum.</p>
+										</figcaption>
+									</figure>
+									<div class="aa-product-hvr-content">
+										<a th:attr="ng-click=@{|cart.add(${p.id})|}" data-toggle2="tooltip" data-placement="top"
+											title="Quick View" data-toggle="modal"
+											data-target="#quick-view-modal"><span
+											class="fa fa-search"></span></a>
+									</div> <!-- product badge --> <span class="aa-badge aa-sale" th:text="${p.available} ? 'Stocking !' : 'Not Stocking !'"></span>
+								</li>				
+									</ul>
+									<a class="aa-browse-btn" style="margin: 35px;">Browse all Product <span
+										class="fa fa-long-arrow-right"></span></a>
+								</div>
+						
+							
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- / popular section -->
+	<!-- Support section -->
+	<section id="aa-support">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="aa-support-area">
+						<!-- single support -->
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<div class="aa-support-single">
+								<span class="fa fa-truck"></span>
+								<h4>FREE SHIPPING</h4>
+								<P>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+									Quam, nobis.</P>
+							</div>
+						</div>
+						<!-- single support -->
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<div class="aa-support-single">
+								<span class="fa fa-clock-o"></span>
+								<h4>30 DAYS MONEY BACK</h4>
+								<P>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+									Quam, nobis.</P>
+							</div>
+						</div>
+						<!-- single support -->
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<div class="aa-support-single">
+								<span class="fa fa-phone"></span>
+								<h4>SUPPORT 24/7</h4>
+								<P>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+									Quam, nobis.</P>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- / Support section -->
+<br>
+	<!-- Latest Blog -->
+	<section id="aa-latest-blog">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="aa-latest-blog-area">
+						<h2>LATEST BLOG</h2>
+						<div class="row">
+							<!-- single latest blog -->
+							<div class="col-md-4 col-sm-4">
+								<div class="aa-latest-blog-single">
+									<figure class="aa-blog-img">
+										<a href="#"><img th:src="@{|/styleUser/images/5.jpg|}"></a>
+										<figcaption class="aa-blog-img-caption">
+											<span href="#"><i class="fa fa-eye"></i>5K</span> <a href="#"><i
+												class="fa fa-thumbs-o-up"></i>426</a> <a href="#"><i
+												class="fa fa-comment-o"></i>20</a> <span href="#"><i
+												class="fa fa-clock-o"></i>June 26, 2016</span>
+										</figcaption>
+									</figure>
+									<div class="aa-blog-info">
+										<h3 class="aa-blog-title">
+											<a href="#">Lorem ipsum dolor sit amet</a>
+										</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing
+											elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae,
+											fugiat odit vel impedit dicta enim repellendus animi.
+											Expedita quas reprehenderit incidunt, voluptates corporis.</p>
+										<a href="#" class="aa-read-mor-btn">Read more <span
+											class="fa fa-long-arrow-right"></span></a>
+									</div>
+								</div>
+							</div>
+							<!-- single latest blog -->
+							<div class="col-md-4 col-sm-4">
+								<div class="aa-latest-blog-single">
+									<figure class="aa-blog-img">
+										<a href="#"><img th:src="@{|/styleUser/images/4.jpg|}"></a>
+										<figcaption class="aa-blog-img-caption">
+											<span href="#"><i class="fa fa-eye"></i>5K</span> <a href="#"><i
+												class="fa fa-thumbs-o-up"></i>426</a> <a href="#"><i
+												class="fa fa-comment-o"></i>20</a> <span href="#"><i
+												class="fa fa-clock-o"></i>June 26, 2016</span>
+										</figcaption>
+									</figure>
+									<div class="aa-blog-info">
+										<h3 class="aa-blog-title">
+											<a href="#">Lorem ipsum dolor sit amet</a>
+										</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing
+											elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae,
+											fugiat odit vel impedit dicta enim repellendus animi.
+											Expedita quas reprehenderit incidunt, voluptates corporis.</p>
+										<a href="#" class="aa-read-mor-btn">Read more <span
+											class="fa fa-long-arrow-right"></span></a>
+									</div>
+								</div>
+							</div>
+							<!-- single latest blog -->
+							<div class="col-md-4 col-sm-4">
+								<div class="aa-latest-blog-single">
+									<figure class="aa-blog-img">
+										<a href="#"><img th:src="@{|/styleUser/images/6.jpg|}"></a>
+										<figcaption class="aa-blog-img-caption">
+											<span href="#"><i class="fa fa-eye"></i>5K</span> <a href="#"><i
+												class="fa fa-thumbs-o-up"></i>426</a> <a href="#"><i
+												class="fa fa-comment-o"></i>20</a> <span href="#"><i
+												class="fa fa-clock-o"></i>June 26, 2016</span>
+										</figcaption>
+									</figure>
+									<div class="aa-blog-info">
+										<h3 class="aa-blog-title">
+											<a href="#">Lorem ipsum dolor sit amet</a>
+										</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing
+											elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae,
+											fugiat odit vel impedit dicta enim repellendus animi.
+											Expedita quas reprehenderit incidunt, voluptates corporis.</p>
+										<a href="#" class="aa-read-mor-btn">Read more <span
+											class="fa fa-long-arrow-right"></span></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<hr>
+	</section>
+	<!-- / Latest Blog -->
+	
+
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout :: areas(~{::title},~{::body})}">
+<head>
+
+<title>Daily Shop | [[#{title.orderdetail}]]</title>
+
+</head>
+<body>
+
+	<!-- catg header banner section -->
+	<section id="aa-catg-head-banner">
+	<img src="/styleUser/img/fashion/gucci.jpg" alt="fashion img">
+		<div class="aa-catg-head-banner-area">
+			<div class="container">
+				<div class="aa-catg-head-banner-content">
+					<h2>Order Detail</h2>
+					<ol class="breadcrumb">
+						<li><a th:href="@{/user/index}">Home</a></li>
+						<li class="active">Order Detail</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- / catg header banner section -->
+
+	<!-- Cart view section -->
+	<section id="cart-view" th:object="${order}">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="cart-view-area">
+						<div class="cart-view-table">
+							<form action="">
+								<div class="table-responsive">
+									<div class="panel-group">
+
+										<!-- Shipping Address -->
+										<div>
+											<div>
+												<div class="panel-body">
+													<div class="row">
+														<div class="col-md-6">
+															<div class="aa-checkout-single-bill">
+																<label>Order ID*</label>
+																<input class="form-control"
+																	disabled="disabled" th:field="*{id}">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="aa-checkout-single-bill">
+																<label>Order Date*</label>
+																<input class="form-control" type="text"
+																	disabled="disabled" th:field="*{createDate}">
+															</div>
+														</div>
+													</div>
+													<br>													
+													<div class="row">
+														<div class="col-md-6">
+															<div class="aa-checkout-single-bill">
+																<label>Username*</label>
+																<input class="form-control" type="text"
+																	disabled="disabled" th:field="*{account.Username}">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="aa-checkout-single-bill">
+																<label>Address*</label>
+																<input class="form-control" type="text"
+																	disabled="disabled" th:field="*{address}">																
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<br>
+									<table class="table">
+										<thead>
+											<tr>
+												<th>ID</th>
+												<th>Product</th>
+												<th>Price</th>
+												<th>Quantity</th>
+												<th>Size</th>
+												<th>Color</th>
+												<th>SubTotal</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="detail: *{orderDetails}" th:object="${detail}">
+												<td>[[*{product.id}]]</td>
+												<td><a class="aa-cart-title" >[[*{product.name}]]</a></td>
+												<td>$ [[*{#numbers.formatDecimal(price, 0, 'COMMA', 2, 'POINT')}]]</td>
+												<td>[[*{quantity}]]</td>
+												<td>[[*{size}]]</td>
+												<td>[[*{color}]]</td>
+												<td>$[[*{#numbers.formatDecimal(price*quantity, 0, 'COMMA', 2, 'POINT')}]]</td>
+											</tr>
+											<tr>
+											</tr>
+										</tbody>
+									</table>
+									<div colspan="6" class="aa-cart-view-bottom">										
+											<button class="aa-cart-view-btn">Total : $ [[*{ship}]]</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- / Cart view section -->
+
+</body>
+</html>

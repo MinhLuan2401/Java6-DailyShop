@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+	<table class="table table-striped">
+		<thead style="background-color: gray; color: dark; text-transform: uppercase; text-align: center;">
+			<tr>
+				<th>No.</th>
+				<th>ID</th>				
+				<th>Fullname</th>
+				<th>Date</th>	
+				<th>Address</th>
+				<th>Action</th>
+				<th>Total</th>
+				<th>Edit</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in orders">
+				<th style="vertical-align: middle;">{{$index+1}}</th>		
+				<th style="vertical-align: middle;">{{item.id}}</th>			
+				<th style="vertical-align: middle;">{{item.account.fullname}}</th>
+				<th style="vertical-align: middle;">{{item.createDate}}</th>	
+				<th style="vertical-align: middle;">{{item.address}}</th>
+				<th style="vertical-align: middle;">{{item.action}}</th>	
+				<th style="vertical-align: middle;">$ {{item.ship}}</th>	
+				<th style="vertical-align: middle;">
+					<button ng-click="delete(item)"  class="btn btn-danger btn-xs">Delete</button>
+				</th>
+			</tr>
+		</tbody>
+	</table>
+</div>

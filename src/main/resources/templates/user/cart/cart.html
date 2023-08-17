@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout :: areas(~{::title},~{::body})}">
+<head>
+
+<title>Daily Shop | [[#{title.cartpages}]]</title>
+
+</head>
+<body>
+
+	<!-- catg header banner section -->
+	<section id="aa-catg-head-banner">
+		<img src="../styleUser/img/fashion/gucci.jpg" alt="fashion img">
+		<div class="aa-catg-head-banner-area">
+			<div class="container">
+				<div class="aa-catg-head-banner-content">
+					<h2>Cart Page</h2>
+					<ol class="breadcrumb">
+						<li><a th:href="@{/user/index}">Home</a></li>
+						<li class="active">Cart</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- / catg header banner section -->
+
+	<!-- Cart view section -->
+	<section id="cart-view">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="cart-view-area">
+						<div class="cart-view-table">
+							<form action="">
+								<div class="table-responsive">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>Image</th>												
+												<th>Product</th>
+												<th>Price</th>
+												<th>Quantity</th>
+												<th>Size</th>
+												<th>Color</th>
+												<th>Total</th>
+												<th>Del</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="item in cart.items">											
+												<td><a href="#"><img src="/styleUser/images/{{item.image}}"
+														alt="img"></a></td>
+												<td><a class="aa-cart-title" href="#">{{item.name}}</a></td>
+												<td>$ {{item.price|number:2}}</td>
+												<td><input class="aa-cart-quantity" name="number" id="number" ng-change="cart.saveToLocalStorage()" ng-model="item.qty" type="number" min="1"></td>
+												<td>
+												<select ng-model="item.size" ng-change="cart.saveToLocalStorage()">
+													<option value="S">Size S</option>
+													<option value="M">Size M</option>
+													<option value="L">Size L</option>
+													<option value="XL">Size XL</option>
+												</select>		
+												</td>
+												<td>
+													<select ng-model="item.color" ng-change="cart.saveToLocalStorage()">
+														<option style="background-color: gray;" value="gray">Gray</option>
+														<option style="background-color: black;" value="black">Black</option>
+														<option style="background-color: white; color: black;" value="white">White</option>											
+														<option style="background-color: green;" value="green">Green</option>
+													</select>
+												</td>
+												<td>$ {{item.qty*item.price|number:2}}</td>
+												<td><a ng-click="cart.remove(item.id)" class="remove"><fa
+															class="fa fa-close"></fa></a></td>
+											</tr>							
+												
+										</tbody>
+									</table>
+											<div colspan="6" class="aa-cart-view-bottom">										
+													 <button ng-click="cart.clear()" class="aa-cart-view-btn">Clear</button>
+											</div>
+								</div>
+							</form>
+							<!-- Cart Total view -->
+							<div class="cart-view-total">
+								<h4>Cart Totals</h4>
+								<table class="aa-totals-table">
+									<tbody>
+										<tr>
+											<th>Subtotal</th>
+											<td>$ {{cart.amount | number : 2}}</td>
+										</tr>
+										<tr>
+											<th>Total</th>
+											<td>$ {{cart.amount + 20 | number : 2}}</td>
+										</tr>
+									</tbody>
+								</table>
+								<a id="submit" th:href="@{/order/checkout}" class="aa-cart-view-btn">Proced to Checkout</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- / Cart view section -->
+<!--<script>-->
+<!--    let formInput = document.getElementById("number");-->
+<!--    let submit = document.getElementById('submit');-->
+
+<!--    submit.addEventListener("click", function(e) {-->
+<!--        e.preventDefault();-->
+<!--        let formValue = formInput.value;-->
+<!--        if (formInput < 0) {-->
+<!--        	alert("Quantity > 0");-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout :: areas(~{::title},~{::body})}">
+<head>
+<title>Daily Shop | [[#{title.login}]]</title>
+
+</head>
+<body>
+
+	<!-- catg header banner section -->
+	<section id="aa-catg-head-banner">
+		<img src="/styleUser/img/fashion/gucci.jpg" alt="fashion img">
+		<div class="aa-catg-head-banner-area">
+			<div class="container">
+				<div class="aa-catg-head-banner-content">
+					<h2>Login Page</h2>
+					<ol class="breadcrumb">
+						<li><a th:href="@{/user/index}">Home</a></li>
+						<li class="active">Login</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- / catg header banner section -->
+
+	<!-- Cart view section -->
+	<section id="aa-myaccount">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="aa-myaccount-area">
+						<div class="row">
+							<div class="col-md-3">
+								
+							</div>
+							<div class="col-md-6">
+								<div class="aa-myaccount-login">
+									<h4>LOGIN</h4>
+									<h3 style="color: red; background-color: yellow; text-align: center;" th:text="${message}"></h3>
+									<form th:action="@{/security/login}" method="post"
+										class="aa-login-form">
+										<label for="username">Username or Email address<span>*</span></label>
+										<input name="username" type="text"
+											placeholder="Username or email"> <label
+											for="password">Password<span>*</span></label> <input
+											name="password" type="password" placeholder="Password">
+										<button type="submit" class="aa-browse-btn">Login</button>
+										<label class="rememberme" for="rememberme"> <input
+											name="remember-me" type="checkbox" id="rememberme">
+											Remember me ?
+										</label>
+										<p class="aa-lost-password">
+											<a href="#">Lost your password ?</a>
+										</p>
+									</form>
+									<hr>
+									<div style="text-align: center;">
+									<a href="/oauth2/authorization/google" style="font-weight: bold;"><i class="fa fa-google-plus" style="font-size:24px;color: red;"></i> GOOGLE</a>
+									&emsp;
+									<a href="/oauth2/authorization/facebook" style="font-weight: bold;"><i class="fa fa-facebook-f" style="font-size:24px; color: blue;"></i> FACEBOOK</a>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- / Cart view section -->
+
+
+</body>
+</html>

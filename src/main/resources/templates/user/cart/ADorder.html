@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout :: areas(~{::title},~{::body})}">
+<head>
+
+<title>Daily Shop | [[#{title.myorder}]]</title>
+
+</head>
+<body>
+
+	<!-- catg header banner section -->
+	<section id="aa-catg-head-banner">
+		<img src="../styleUser/img/fashion/gucci.jpg" alt="fashion img">
+		<div class="aa-catg-head-banner-area">
+			<div class="container">
+				<div class="aa-catg-head-banner-content">
+					<h2>Your Order</h2>
+					<ol class="breadcrumb">
+						<li><a th:href="@{/user/index}">Home</a></li>
+						<li class="active">My Order</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- / catg header banner section -->
+
+	<!-- Cart view section -->
+	<section id="cart-view">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="cart-view-area">
+						<div class="cart-view-table">
+						  
+								<div class="table-responsive" >
+									<table class="table table-striped">
+										<thead>
+											<tr class="success">
+												<th>No.</th>
+												<th>Order Date</th>
+												<th>Address</th>
+												<th>Edit</th>
+												<th>Action</th>
+												<th>View</th>
+											</tr>
+										</thead>
+										<tbody th:each="order : ${orders}">
+										  <form th:action="@{/order/listAll/{id}(id=${order.id})}" method="post" th:object="${order}">
+											<tr>
+												<td>[[${order.id}]]</td>
+												<td>[[${order.createDate}]]</td>
+												<td style="text-align: left;">[[${order.address}]]</td>
+												<td>
+													<select name="action" class="form-control" style="font-weight: bold; text-transform: uppercase;">	
+														<option selected="selected">[[${order.action}]]</option>																								
+														<option value="Đã Xác Nhận">Đã Xác Nhận</option>
+														<option value="Đang Giao Hàng">Đang Giao Hàng</option>
+														<option value="Đã Giao Hàng">Đã Giao Hàng</option>
+													</select>
+												</td>
+
+												<td>
+												<button type="submit" class="btn btn-primary">Set</button>
+												</td>
+												<td><a th:href="@{|/order/detail/${order.id}|}"><b
+														class="glyphicon glyphicon-eye-open"></b></a></td>
+											</tr>
+											</form>
+										</tbody>
+									</table>
+								</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- / Cart view section -->
+
+</body>
+</html>

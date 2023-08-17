@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+	<table class="table table-striped">
+		<thead style="background-color: gray; color: dark; text-transform: uppercase; text-align: center;">
+			<tr>
+	
+				<th>No.</th>			
+				<th>Photo</th>
+				<th>ID</th>
+				<th>Fullname</th>
+				<th>Email</th>
+				<th>Count</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in customers">
+				<th style="vertical-align: middle;">{{$index+1}}</th>		
+				<th style="vertical-align: middle;"><img style="width: 50px" alt="{{item.account.photo}}" src="/styleUser/images/{{item.account.photo}}"></th>	
+				<th style="vertical-align: middle;">{{item.account.username}}</th>	
+				<th style="vertical-align: middle;">{{item.account.fullname}}</th>
+				<th style="vertical-align: middle;">{{item.account.email}}</th>
+				<th style="vertical-align: middle;">{{item.count}}</th>
+			</tr>
+		</tbody>
+	</table>
+</div>

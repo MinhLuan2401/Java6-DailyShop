@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:fragment="areas(title,body)">
+<head>
+<link href="/styleUser/images/icon.png" rel="icon" sizes="32x32">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title th:replace="${title}"></title>
+
+<!-- Css Start-->
+<link th:insert="~{/layoutUser/css::css}">
+<!--Start of Fchat.vn-->
+
+</head>
+<body ng-app="shopping-cart" ng-controller="ctrl">
+	<!-- wpf loader Two -->
+	<div id="wpf-loader-two">
+		<div class="wpf-loader-two-inner">
+			<span>Loading</span>
+		</div>
+	</div>
+	<!-- / wpf loader Two -->
+
+	<!-- SCROLL TOP BUTTON -->
+	<a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
+	<!-- END SCROLL TOP BUTTON -->
+
+	<!-- Start header section -->
+	<nav th:replace="~{/layoutUser/nav::navbar}"></nav>
+
+
+	<!-- Main Start-->
+	<main th:replace="${body}"></main>
+	<!-- Main End -->
+
+
+	<!-- Subscribe section -->
+	<div th:replace="~{/layoutUser/footer::footer}"></div>
+	<!-- / footer -->
+
+	<div th:insert="~{/layoutUser/js::js}"></div>
+	<script th:src="@{/angularJS/shoppping-cart.js}"></script>
+	<script th:src="@{/angularJS/shopping-cart-app.js}"></script>
+
+</body>
+</html>

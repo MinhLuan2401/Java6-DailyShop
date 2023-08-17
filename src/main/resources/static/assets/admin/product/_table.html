@@ -1,0 +1,48 @@
+<div class="panel panel-default" ng-if="items">
+	<table class="table table-striped">
+		<thead style="background-color: gray; color: dark; text-transform: uppercase; text-align: center;">
+			<tr>
+				<th>Id</th>
+				<th>Image</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Date</th>
+				<th>Image</th>
+				<th>Category</th>
+				<th>Available</th>
+				<th>Edit</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in pageProd.items">
+				<th style="vertical-align: middle;">{{item.id}}</th>
+				<th style="vertical-align: middle;"><img alt="{{item.id}}" style="width: 50px; height: 70px" src="/assets/images/{{item.image}}"></th>
+				<td style="vertical-align: middle;"><b>{{item.name}}</b></td>
+				<td style="vertical-align: middle;">{{item.price | number:2}}</td>
+				<td style="vertical-align: middle;">{{item.createDate | date:'dd-mm-yyyy'}}</td>
+				<td style="vertical-align: middle;">{{item.image}}</td>
+				<td style="vertical-align: middle;">{{item.category.name}}</td>
+				<td style="vertical-align: middle;">{{item.available?'Yes':'No'}}</td>
+				<td style="vertical-align: middle;">
+					<div class="btn-group btn-group-xs">
+						<button ng-click="edit(item)" class="btn btn-primary" style="margin-right: 10px;"><span class="glyphicon glyphicon-edit"></span></button>
+						<button ng-click="delete(item)" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="panel-footer text-center">
+		<button ng-click="pageProd.first()" class="btn btn-dark"><span class="glyphicon glyphicon-arrow-left"></span></button>
+		<button ng-click="pageProd.prev()" class="btn btn-dark">
+		 <span class="glyphicon glyphicon-chevron-left"></span>
+		</button>
+		<button class="btn btn-dark"> <b>{{pageProd.page + 1}} of {{pageProd.count}}</b> </button>
+		<button ng-click="pageProd.next()" class="btn btn-dark">
+			  <span class="glyphicon glyphicon-chevron-right"></span>
+		</button>
+		<button ng-click="pageProd.last()" class="btn btn-dark">
+			<span class="glyphicon glyphicon-arrow-right"></span>
+		</button>
+	</div>
+</div>

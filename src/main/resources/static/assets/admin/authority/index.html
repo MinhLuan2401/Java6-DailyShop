@@ -1,0 +1,53 @@
+<div class="panel panel-default">
+	<table class="table table-striped">
+		<thead
+			style="background-color: gray; color: dark; text-transform: uppercase; text-align: center;">
+			<tr>
+				<th>Avata</th>
+				<th>Username</th>
+				<th>Password</th>
+				<th>Fullname</th>
+				<th>Email</th>
+				<th ng-repeat="role in roles" class="text-center">{{role.name}}</th>
+				<th>Del</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in pager.admins">
+				<th style="vertical-align: middle;"><img alt="{{item.photo}}"
+					style="width: 50px; height: 50px"
+					src="/styleUser/images/{{item.photo}}"></th>
+				<th style="vertical-align: middle;">{{item.username}}</th>
+				<td style="vertical-align: middle;">{{item.password}}</td>
+				<td style="vertical-align: middle;"><b>{{item.fullname}}</b></td>
+				<td style="vertical-align: middle;">{{item.email}}</td>
+				<th style="vertical-align: middle;" ng-repeat="role in roles"
+					class="text-center"><input type="checkbox"
+					ng-checked="authority_of(item,role)"
+					ng-click="authority_changed(item,role)"></th>
+				<th style="vertical-align: middle;">
+					<button ng-click="delete(item)" class="btn btn-danger btn-xs">
+						<span class="glyphicon glyphicon-remove"></span>
+					</button>
+				</th>
+			</tr>
+		</tbody>
+	</table>
+	<div class="panel-footer text-center">
+		<button ng-click="pager.first()" class="btn btn-dark">
+			<span class="glyphicon glyphicon-arrow-left"></span>
+		</button>
+		<button ng-click="pager.prev()" class="btn btn-dark">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+		</button>
+		<button class="btn btn-dark">
+			<b>{{pager.page + 1}} of {{pager.count}}</b>
+		</button>
+		<button ng-click="pager.next()" class="btn btn-dark">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+		</button>
+		<button ng-click="pager.last()" class="btn btn-dark">
+			<span class="glyphicon glyphicon-arrow-right"></span>
+		</button>
+	</div>
+</div>

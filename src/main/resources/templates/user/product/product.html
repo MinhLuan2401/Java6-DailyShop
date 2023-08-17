@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout :: areas(~{::title},~{::body})}">
+<head>
+
+<title>Daily Shop | [[#{title.product}]]</title>
+
+</head>
+
+<body class="productPage">
+
+
+
+	<!-- catg header banner section -->
+	<section id="aa-catg-head-banner">
+		<img src="/styleUser/img/fashion/gucci.jpg" alt="fashion img">
+		<div class="aa-catg-head-banner-area">
+			<div class="container">
+				<div class="aa-catg-head-banner-content">
+					<h2>Fashion</h2>
+					<ol class="breadcrumb">
+						<li><a th:href="@{/user/cart}">Home</a></li>
+						<li class="active">Product</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- / catg header banner section -->
+
+	<!-- product category -->
+	<section id="aa-product-category">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-9 col-md-9 col-sm-8 col-md-push-3">
+					<div class="aa-product-catg-content">
+						<div class="aa-product-catg-head">
+							<div class="aa-product-catg-head-left">
+								&emsp; <label> </label>&emsp; <a
+									th:href="@{|/product/list/sort/Name|}" class="btn btn-primary">Search Name</a>&emsp;
+								<a th:href="@{|/product/list/sort/CreateDate|}"
+									class="btn btn-primary">Search Date</a>&emsp;
+								<form action="/product/list/sort/Price" class="aa-sort-form" method="post">
+									<button class="btn btn-primary">Search</button>&emsp;
+									<select name="price_gia" style="height: 32px;">
+										<option value="null">Price</option>
+										<option value="increase">Increase &#8593;</option>
+										<option value="reduce">Reduce &#8595;</option>
+									</select>																	
+								</form>
+							</div>
+							<div class="aa-product-catg-head-right">
+								<a id="grid-catg" href="#"><span class="fa fa-th"></span></a> <a
+									id="list-catg" href="#"><span class="fa fa-list"></span></a>
+							</div>
+						</div>
+						<div class="aa-product-catg-body">
+							<ul class="aa-product-catg">
+								<!-- start single product item -->
+								<li th:each="p: ${page}">
+									<figure>
+										<a class="aa-product-img"
+											th:href="@{|/product/detail/${p.id}|}"> <img
+											th:src="@{|/styleUser/images/${p.image}|}"
+											alt="polo shirt img"></a>
+										<a th:attr="ng-click=@{|cart.add(${p.id})|}"
+											class="aa-add-card-btn" style="cursor: pointer;"><span
+											class="fa fa-shopping-cart"></span>Add To Cart</a>
+										<figcaption>
+											<h4 class="aa-product-title">
+												<a href="" th:utext="${p.name}"></a>
+											</h4>
+											<span class="aa-product-price">$[[${p.price}]]</span><span
+												class="aa-product-price"><del>$[[${p.price} +
+													10 ]]</del></span>
+											<p class="aa-product-descrip">Lorem ipsum dolor sit amet,
+												consectetur adipisicing elit. Numquam accusamus facere
+												iusto, autem soluta amet sapiente ratione inventore nesciunt
+												a, maxime quasi consectetur, rerum illum.</p>
+										</figcaption>
+									</figure>
+									<div class="aa-product-hvr-content">
+										<a th:href="@{|/product/detail/${p.id}|}"
+											data-toggle2="tooltip" data-placement="top" title="View"
+											data-target="#quick-view-modal"><span
+											class="fa fa-search"></span></a>
+									</div> <!-- product badge --> <span class="aa-badge aa-sale"
+									th:text="${p.available} ? 'Stocking' : 'Not Stocking !'"></span>
+
+								</li>
+
+							</ul>
+
+						</div>
+						<div class="aa-product-catg-pagination">
+							<nav>
+								<ul class="pagination">
+									<li><a href="#" aria-label="Previous"> <span
+											aria-hidden="true">«</span>
+									</a></li>
+									<li><a th:href="@{|/product/list/${sc}p=0|}">1</a></li>
+									<li><a th:href="@{|/product/list/${sc}p=1|}">2</a></li>
+									<li><a th:href="@{|/product/list/${sc}p=2|}">3</a></li>
+									<li><a th:href="@{|/product/list/${sc}p=3|}">4</a></li>
+									<li><a th:href="@{|/product/list/${sc}p=4|}">5</a></li>
+									<li><a href="#" aria-label="Next"> <span
+											aria-hidden="true">»</span>
+									</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-4 col-md-pull-9">
+					<aside class="aa-sidebar">
+						<!-- single sidebar -->
+						<div class="aa-sidebar-widget">
+							<h3>Category</h3>
+							<ul class="aa-catg-nav">
+								<li th:each="c:${cates}"><a
+									th:href="@{|/product/list?cid=${c.id}|}">[[${c.name}]]</a></li>
+							</ul>
+						</div>
+						<!-- single sidebar -->
+						<div class="aa-sidebar-widget">
+							<h3>Tags</h3>
+							<div class="tag-cloud">
+								<a href="#">Fashion</a> <a href="#">Ecommerce</a> <a href="#">Shop</a>
+								<a href="#">Hand Bag</a> <a href="#">Laptop</a> <a href="#">Head
+									Phone</a> <a href="#">Pen Drive</a>
+							</div>
+						</div>
+						<!-- single sidebar -->
+						<div class="aa-sidebar-widget">
+							<h3>Shop By Price</h3>
+<!--							 price range 
+							<div class="aa-sidebar-price-range">
+								<form action="/product/list/sort/Price_min_max" method="post">
+									<div id="skipstep"
+										class="noUi-target noUi-ltr noUi-horizontal noUi-background">
+									</div>
+									<span id="skip-value-lower" class="example-val" name="min">30.00</span>
+									<span id="skip-value-upper" class="example-val" name="max">100.00</span>
+									<button class="aa-filter-btn" type="submit">Filter</button>
+								</form>
+							</div>-->
+
+						</div>
+						<!-- single sidebar -->
+						<div class="aa-sidebar-widget">
+							<h3>New Update</h3>
+							<div class="aa-recently-views">
+								<ul>
+									<li th:each="p: ${list4}"><a href="#"
+										class="aa-cartbox-img"><img alt="img"
+											style="width: 80px; height: 100px;"
+											th:src="@{|/styleUser/images/${p.image}|}"></a>
+										<div class="aa-cartbox-info">
+											<h4>
+												<a href="#" th:utext="${p.name}"></a>
+											</h4>
+											<p>$ [[${p.price}]]</p>
+											<hr>
+										</div></li>
+								</ul>
+							</div>
+						</div>
+					</aside>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<!-- / product category -->
+
+
+
+</body>
+</html>

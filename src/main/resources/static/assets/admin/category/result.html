@@ -1,0 +1,22 @@
+<div class="panel panel-default">
+	<table class="table table-striped">
+		<thead style="background-color: gray; color: dark; text-transform: uppercase; text-align: center;">
+			<tr>
+				<th>No.</th>	
+				<th>Mã Loại</th>			
+				<th>Tên Loại Hàng</th>
+				<th>Số Lượng</th>
+				<th>Doanh Thu</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in result">
+				<th style="vertical-align: middle;">{{$index+1}}</th>		
+				<td style="vertical-align: middle;">{{item.category.id}}</td>	
+				<td style="vertical-align: middle;">{{item.category.name}}</td>
+				<td style="vertical-align: middle;">{{item.count}}</td>
+				<th style="vertical-align: middle; font-size: 18px;">$ {{item.revenue}}</th>
+			</tr>
+		</tbody>
+	</table>
+</div>

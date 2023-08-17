@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout :: areas(~{::title},~{::body})}">
+<head>
+
+<title>Daily Shop | [[#{title.changepassword}]]</title>
+
+</head>
+<body>
+
+	<!-- catg header banner section -->
+	<section id="aa-catg-head-banner">
+		<img src="/styleUser/img/fashion/gucci.jpg" alt="fashion img">
+		<div class="aa-catg-head-banner-area">
+			<div class="container">
+				<div class="aa-catg-head-banner-content">
+					<h2>Password Page</h2>
+					<ol class="breadcrumb">
+						<li><a th:href="@{/user/index}">Home</a></li>
+						<li class="active">Change Password</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- / catg header banner section -->
+
+	<!-- Cart view section -->
+	<section id="aa-myaccount">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="aa-myaccount-area">
+						<div class="row">
+							<div class="col-md-3">
+							</div>
+							<div class="col-md-6">
+								<div class="aa-myaccount-login">
+									<h4>CHANGE PASSWORD </h4>
+									<h3 style="color: red; background-color: yellow; text-align: center;" th:text="${message}"></h3>
+									<form action="/home/changepassword" method="post" class="aa-login-form">
+										<label for="username">Username or Email address<span>*</span></label>
+										<input name="username"id="username" type="text"
+											placeholder="Username or email"> 
+										<label for="password">Password<span>*</span></label>
+										<input
+											id="password" name="password" type="password" placeholder="Password">
+										<input
+											id="newpassword" name="newpassword" type="password" placeholder="New Password">
+										<input
+											id="confirmpassword" name="confirmpassword" type="password" placeholder="Comfirm Password">
+										<button type="submit" class="aa-browse-btn">Change Password</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- / Cart view section -->
+
+
+</body>
+</html>

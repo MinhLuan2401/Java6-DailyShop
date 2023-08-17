@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+	<table class="table table-striped">
+		<thead style="background-color: gray; color: dark; text-transform: uppercase; text-align: center;">
+			<tr>
+	
+				<th>No.</th>			
+				<th>Image</th>
+				<th>Product ID</th>
+				<th>Product Name</th>
+				<th>Product Price</th>
+				<th>Product Date</th>
+				<th>Quantily</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in topproducts">
+				<th style="vertical-align: middle;">{{$index+1}}</th>		
+				<th style="vertical-align: middle;"><img style="width: 60px" alt="{{item.account.photo}}" src="/styleUser/images/{{item.product.image}}"></th>	
+				<th style="vertical-align: middle;">{{item.product.id}}</th>	
+				<th style="vertical-align: middle;">{{item.product.name}}</th>
+				<th style="vertical-align: middle;">$ {{item.product.price}}</th>
+				<th style="vertical-align: middle;">{{item.product.createDate}}</th>
+				<th style="vertical-align: middle;">{{item.sum}}</th>
+			</tr>
+		</tbody>
+	</table>
+</div>

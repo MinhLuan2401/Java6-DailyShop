@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout :: areas(~{::title},~{::body})}">
+<head>
+
+<title>Daily Shop | [[#{title.checkoutpages}]]</title>
+
+</head>
+<body>
+
+	<!-- catg header banner section -->
+	<section id="aa-catg-head-banner">
+		<img src="../styleUser/img/fashion/gucci.jpg" alt="fashion img">
+		<div class="aa-catg-head-banner-area">
+			<div class="container">
+				<div class="aa-catg-head-banner-content">
+					<h2>Checkout Page</h2>
+					<ol class="breadcrumb">
+						<li><a th:href="@{/user/index}">Home</a></li>
+						<li class="active">Checkout</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- / catg header banner section -->
+
+	<!-- Cart view section -->
+	<section id="checkout">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="checkout-area">
+						<form action="" name="myForm">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="checkout-left">
+										<div class="panel-group">
+
+											<!-- Shipping Address -->
+											<div>
+												<div>
+													<h2>Shippping Address</h2>
+													<br>
+												</div>
+												<div>
+													<div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="aa-checkout-single-bill">
+																	<label>Username *</label>
+																	<div class="form-control" id="username"
+																		>[[${#request.remoteUser}]]</div>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="aa-checkout-single-bill">
+																	<label>Order Date *</label>
+																	<div class="form-control" type="text"
+																		>{{order.createDate |
+																		date:'dd-MM-yyyy'}}</div>
+																</div>
+															</div>
+														</div>
+														<br>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="aa-checkout-single-bill">
+																	<label>Fullname *</label>
+																	<div class="form-control" type="text"
+																		>nguyen van
+																		[[${#request.remoteUser}]]</div>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="aa-checkout-single-bill">
+																	<label>Phone *</label>
+																	<div class="form-control" type="text"
+																		>0123-456-789</div>
+																</div>
+															</div>
+														</div>
+														<br>
+														<div class="row">
+															<div class="col-md-12">
+																<div class="aa-checkout-single-bill">
+																	<label>Address *</label> <br>
+																	<textarea rows="3" cols="66" name="myName" required ng-model="order.address"></textarea>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="checkout-right">
+										<h4>Order Summary</h4>
+										<div class="aa-order-summary-area">
+											<table class="table table-responsive">
+												<thead>
+													<tr>
+														<th>Product</th>
+														<th>Qty</th>												
+														<th>Size</th>
+														<th>Color</th>
+														<th>Total</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr ng-repeat="item in cart.items">
+														<td>{{item.name}}</td>	
+														<td> <strong> X {{item.qty}}</strong></td>											
+														<td>{{item.size}}</td>
+														<td>{{item.color}}</td>
+														<td>$ {{item.qty*item.price|number:2}}</td>
+													</tr>
+
+												</tbody>
+												<tfoot>
+													<tr>
+														<th></th>
+														<th>Subtotal</th>
+														<td>$ {{cart.amount | number : 2}}</td>
+														<th></th>
+													
+													</tr>
+													<tr>
+														<th></th>
+														<th>Ship</th>
+														<td>$ 20</td>
+													
+														<th></th>
+													</tr>
+													<tr>
+														<th></th>
+														<th>Total</th>
+														<td>$ {{cart.amount + 20.00 | number : 2}}</td>
+														<th></th>
+														
+													</tr>
+													
+												</tfoot>
+											</table>
+										</div>
+										<h4>Payment Method</h4>
+										<div class="aa-payment-method">
+											<label for="cashdelivery"><input type="radio"
+												id="cashdelivery" name="optionsRadios"> Cash on
+												Delivery </label> <label for="paypal"><input type="radio"
+												id="paypal" name="optionsRadios" checked> Via Paypal
+											</label> <img
+												src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg"
+												border="0" alt="PayPal Acceptance Mark">
+
+											<a style="cursor: pointer;" ng-click="order.purchase()" class="aa-browse-btn">Place Order</a>
+											<a th:href="@{/home/cart}" class="aa-browse-btn">Cancel</a>
+										</div>
+									</div>
+								</div>
+							</div> 							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr>
+	</section>
+	<!-- / Cart view section -->
+
+</body>
+</html>

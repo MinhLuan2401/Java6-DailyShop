@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout :: areas(~{::title},~{::body})}">
+<head>
+<title>Daily Shop | [[#{title.forgotpassword}]]</title>
+
+</head>
+<body>
+
+	<!-- catg header banner section -->
+	<section id="aa-catg-head-banner">
+		<img src="/styleUser/img/fashion/gucci.jpg" alt="fashion img">
+		<div class="aa-catg-head-banner-area">
+			<div class="container">
+				<div class="aa-catg-head-banner-content">
+					<h2>Password Page</h2>
+					<ol class="breadcrumb">
+						<li><a th:href="@{/user/index}">Home</a></li>
+						<li class="active">Forgot Password</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- / catg header banner section -->
+
+	<!-- Cart view section -->
+	<section id="aa-myaccount">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="aa-myaccount-area">
+						<div class="row">
+							<div class="col-md-3">
+							
+							</div>
+							<div class="col-md-6">
+								<div class="aa-myaccount-login">
+									<h4>FORGOT PASSWORD </h4>
+									<h3 style="color: red; background-color: yellow; text-align: center;" th:text="${message}"></h3>
+									<form action="forgotpassword" method="post" class="aa-login-form">
+									
+										<label for="username">Username <span>*</span></label>							
+										<input name="username" type="text" placeholder="Username or email"> 
+										
+										<label for="password">Email <span>*</span></label>
+										<input id="email" name="email" type="text" placeholder="Your Email">
+																				
+										<button type="submit" class="aa-browse-btn">Forgot Password</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- / Cart view section -->
+
+
+</body>
+</html>
